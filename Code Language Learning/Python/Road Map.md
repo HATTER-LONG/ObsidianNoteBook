@@ -1,0 +1,2 @@
+1. 基础相关学习：The Hitchkiker's Guide to Python!
+2. 进阶实例学习-- Web Scraping：[practical-tutorials/project-based-learning: Curated list of project-based tutorials (github.com)](https://github.com/practical-tutorials/project-based-learning#python))

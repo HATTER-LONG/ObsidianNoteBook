@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/基础使用.md",
+                "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b4c1f05e2cb33835",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bc2911483e431f1b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Code Language Learning/Python/Road Map.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -77,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Python/基础使用.md",
+                "file": "Code Language Learning/Python/Road Map.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python/基础使用.md"
+                "file": "Code Language Learning/Python/Road Map.md"
               }
             }
           }
@@ -105,8 +130,11 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a91c7bb0c93370d6",
+  "active": "cffba115b9e175e9",
   "lastOpenFiles": [
+    "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
+    "Code Language Learning/Rust/Road Map.md",
+    "Code Language Learning/Python/Road Map.md",
     "音视频技术/1.音视频基础.md.md"
   ]
 }

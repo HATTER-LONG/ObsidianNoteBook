@@ -1,6 +1,6 @@
 {
   "legacyEditor": false,
   "livePreview": true,
-  "vimMode": true,
+  "vimMode": false,
   "spellcheck": false
 }
