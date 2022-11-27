@@ -2,5 +2,8 @@
   "legacyEditor": false,
   "livePreview": true,
   "vimMode": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "readableLineLength": false,
+  "useTab": false,
+  "showLineNumber": true
 }

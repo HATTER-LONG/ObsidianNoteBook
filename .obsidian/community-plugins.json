@@ -3,5 +3,10 @@
   "templater-obsidian",
   "nldates-obsidian",
   "code-block-copy",
-  "obsidian-git"
+  "obsidian-git",
+  "obsidian-pangu",
+  "table-editor-obsidian",
+  "obsidian-excalidraw-plugin",
+  "obsidian-outliner",
+  "obsidian-admonition"
 ]

@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a91c7bb0c93370d6",
+            "id": "a6bc38212abc125a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b4c1f05e2cb33835",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "bc2911483e431f1b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Code Language Learning/Python/Road Map.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -86,7 +61,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 217
+    "width": 217,
+    "collapsed": true
   },
   "right": {
     "id": "9eac8cc850dc0462",
@@ -102,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Code Language Learning/Python/Road Map.md",
+                "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,22 +95,33 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Code Language Learning/Python/Road Map.md"
+                "file": "Code Language Learning/Python/The Hitchhiker's Guide to Python.md"
               }
             }
+          },
+          {
+            "id": "fdeb2cb218ed7b03",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
     "width": 300,
     "collapsed": true
   },
-  "active": "cffba115b9e175e9",
+  "active": "a6bc38212abc125a",
   "lastOpenFiles": [
-    "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
-    "Code Language Learning/Rust/Road Map.md",
     "Code Language Learning/Python/Road Map.md",
+    "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
+    "近期工作事项.md",
+    "Code Language Learning/JS/Road Map.md",
+    "Code Language Learning/Rust/Road Map.md",
     "音视频技术/1.音视频基础.md.md"
   ]
 }
