@@ -1,9 +1,10 @@
 {
-  "baseFontSize": 16,
+  "baseFontSize": 15,
   "cssTheme": "Catppuccin",
   "translucency": false,
   "accentColor": "",
   "theme": "system",
-  "monospaceFontFamily": "FantasqueSansMono Nerd Font Mono",
-  "textFontFamily": "LXGW WenKai"
+  "monospaceFontFamily": "Liga SFMono Nerd Font",
+  "textFontFamily": "LXGW WenKai",
+  "baseFontSizeAction": true
 }
