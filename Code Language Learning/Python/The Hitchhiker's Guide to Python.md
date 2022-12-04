@@ -168,14 +168,15 @@ x = modu.sqrt(4)  # sqrt显然是属于模块modu的。
 
 在 Python 中一切都是对象，并且能按对象的方式处理。但是 Python 并没有并没有将面向对象作为最主要的编程范式，Python 开发者有更多自由去选择不使用面向对象。
 有时把有隐式上下文和副作用的函数与仅包含逻辑的函数(纯函数)谨慎地区分开来，会带来以下好处：
-  - 纯函数的结果是确定的：给定一个输入，输出总是固定相同。
-  - 当需要重构或优化时，纯函数更易于更改或替换。
-  - 纯函数更容易做单元测试：很少需要复杂的上下文配置和之后的数据清除工作。
-  - 纯函数更容易操作、修饰和分发。
+
+- 纯函数的结果是确定的：给定一个输入，输出总是固定相同。
+- 当需要重构或优化时，纯函数更易于更改或替换。
+- 纯函数更容易做单元测试：很少需要复杂的上下文配置和之后的数据清除工作。
+- 纯函数更容易操作、修饰和分发。
 
 ### 装饰器
 
-Python 语言提供一个简单而强大的语法：**装饰器**。装饰器是一个函数或类，它可以包装(或装饰)一个函数或方法。被 '装饰' 的函数或方法会替换原来的函数或方法。由于在Python中函数是一等对象它也可以被 '手动操作'，但是使用 `@decorators` 语法更清晰，因此首选这种方式。
+Python 语言提供一个简单而强大的语法：**装饰器**。装饰器是一个函数或类，它可以包装(或装饰)一个函数或方法。被 '装饰' 的函数或方法会替换原来的函数或方法。由于在 Python 中函数是一等对象它也可以被 '手动操作'，但是使用 `@decorators` 语法更清晰，因此首选这种方式。
 
 ```python
 def foo():
@@ -206,7 +207,7 @@ My name is bar
 '''
 ```
 
-这个机制对于分离概念和避免外部不相关逻辑“污染”主要逻辑很有用处。 记忆化 <https://en.wikipedia.org/wiki/Memoization#Overview> 或缓存就是一个很好的使用装饰器的例子：您需要在table中储存一个耗时函数的结果，并且下次能直接 使用该结果，而不是再计算一次。这显然不属于函数的逻辑部分。
+这个机制对于分离概念和避免外部不相关逻辑“污染”主要逻辑很有用处。  记忆化 <https://en.wikipedia.org/wiki/Memoization#Overview>  或缓存就是一个很好的使用装饰器的例子：您需要在 table 中储存一个耗时函数的结果，并且下次能直接 使用该结果，而不是再计算一次。这显然不属于函数的逻辑部分。
 
 ### 上下文管理器
 
@@ -238,4 +239,118 @@ with CustomOpen("./openfile.py") as f:
     content = f.read()
     print(content)
 ```
-这只是一个常规的Python对象，它有两个由 `with` 语句使用的额外方法。 CustomOpen 首先被实例化，然后调用它的`__enter__` 方法，而且 `__enter__` 的返回值在 `as f` 语句中被赋给 `f` 。 当 `with` 块中的内容执行完后，会调用 `__exit__` 方法。
+
+这只是一个常规的 Python 对象，它有两个由  `with`  语句使用的额外方法。 CustomOpen 首先被实例化，然后调用它的`__enter__` 方法，而且  `__enter__`  的返回值在  `as f`  语句中被赋给  `f` 。 当  `with`  块中的内容执行完后，会调用  `__exit__`  方法。
+
+### 动态类型
+
+Python 中的变量和其他语言有很大不同，其仅仅代表只想内存的“标签”，因此很可能上一秒还指向字符串的变量，下一刻变成了指向一个函数。这往往为调试增加了很大的困难，以下方法可以作为避免问题的参考：
+
+- 避免对不同类型的对象使用同一个变量名称。
+```ad-note
+title: 差
+```python
+a = 1
+a = "a string"
+
+def func():
+    print(a)
+
+```
+
+```ad-note
+title:好
+```python
+count = 1
+msg = "a string"
+
+def func():
+    print(msg)
+
+```
+
+- 使用简短的函数或方法能降低对不相关对象使用同一个名称的风险。即使是相关的不同类型的对象，也更建议使用不同命名：
+```ad-note
+title:差
+```python
+items = "a b c d"
+items = items.split(" ")
+items = set(items)  # 转变为集合
+```
+
+重复使用命名对效率没有提升：赋值时无论如何都会产生新的对象。然而随着复杂度的 提升，赋值语句被其他代码包括 'if' 分支和循环分开，使得更难查明指定变量的类型。
+
+### 可变和不可变类型
+Python提供两种内置或用户定义的类型。
+- 可变类型允许内容的内部修改。典型的动态类型，包括列表与字典：列表都有可变方法，如 `list.append()` 和 `list.pop()`，并且能就地修改，字典也是一样。
+- 不可变类型没有修改自身内容的方法。比如，赋值为整数 6的变量 x 并没有 "自增" 方法，如果需要计算 x + 1，必须创建另一个整数变量并给其命名。
+```python
+my_list = [1, 2, 3, 4, 5]
+my_list[0] = 0
+print(my_list)  # 源列表被修改
+
+x = 6
+x = x + 1  # x 是一个新的变量
+```
+这种差异导致的一个后果就是，可变类型是不稳定的，因而不能作为字典的键值使用。
+- python 中字符串是不可变的类型，这意味着当需要组合一个字符串时，将每一个部分放到一个可变列表中再使用 `join` 方法组合起来的做法更高效。
+```ad-note
+title:差
+```python
+# 创建将 0 到 19 连接起来的字符串（例如"0123..171819"）
+nums = ""
+
+for n in range(20):
+    nums += str(n)  # 每个字符串都要新建
+print(nums)
+```
+
+```ad-note
+title:好
+```python
+# 创建将 0 到 19 连接起来的字符串（例如"0123..171819"）
+nums = []
+
+for n in range(20):
+    nums.append(str(n))
+print("".join(nums))  # 更高效
+```
+
+```ad-note
+title:更好
+```python
+# 创建将 0 到 19 连接起来的字符串（例如"0123..171819"）
+nums = [str(n) for n in range(20)]
+print("".join(nums))
+```
+
+```ad-note
+title:最好
+```python
+# 创建将 0 到 19 连接起来的字符串（例如"0123..171819"）
+nums = map(str, range(20))
+print("".join(nums))
+```
+- 有时使用 `join` 并不是最好的选择，如果预先确定数量的字符串进行组合使用时加法操作更快，但在前边例子中的情况或添加已存在的字符串中时使用 `join` 更好：
+
+```python
+foo = "foo"
+bar = "bar"
+
+foobar = foo + bar  # 好的做法
+foo += "ooo"  # 不好
+foo = "".join([foo, "ooo"])  # 更好的方式
+```
+
+```ad-note
+title:注解
+
+除了 [`str.join()`](https://docs.python.org/3/library/stdtypes.html#str.join "(在 Python v3.7)") 和 `+`，您也可以使用 [%](https://docs.python.org/3/library/string.html#string-formatting "(在 Python v3.7)") 格式运算符来连接确定数量的字符串，但 [**PEP 3101**](https://www.python.org/dev/peps/pep-3101) 建议使用 [`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format "(在 Python v3.7)") 替代 `%` 操作符。
+```python
+foo = 'foo'
+bar = 'bar'
+
+foobar = '%s%s' % (foo, bar) # 可行
+foobar = '{0}{1}'.format(foo, bar) # 更好
+foobar = '{foo}{bar}'.format(foo=foo, bar=bar) # 最好
+```
