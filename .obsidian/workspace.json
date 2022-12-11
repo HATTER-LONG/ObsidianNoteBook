@@ -108,19 +108,19 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 200,
     "collapsed": true
   },
   "active": "4d5e73f8decf446a",
   "lastOpenFiles": [
-    "Code Language Learning/JS/Road Map.md",
-    "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
-    "Code Language Learning/Rust/Road Map.md",
     "近期工作事项.md",
+    "Code Language Learning/Python/The Hitchhiker's Guide to Python.md",
+    "Code Language Learning/JS/Road Map.md",
+    "Code Language Learning/Rust/Road Map.md",
     "Code Language Learning/Python/Road Map.md",
     "Excalidraw/Drawing 2022-12-04 20.21.10.excalidraw.md",
     "音视频技术/1.音视频基础.md.md"
