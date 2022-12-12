@@ -539,3 +539,112 @@ word = ''.join(letters)
 ```
 
 这会将 word 变量赋值为 'spam'。这个习语可以用在列表和元组中。
+
+#### 在集合体（collection）中查找一项
+有时我们需要在集合中查找，常见的列表和集合（set）。如下代码举例：
+
+```python
+s = set(["s", "p", "a", "m"])
+l = ["s", "p", "a", "m"]
+
+
+def lookup_set(s):
+    return "s" in s
+
+
+def lookup_list(l):
+    return "s" in l
+```
+
+即使这两个函数看起来一样，但是由 _查找集合_ 是利用哈西散列进行查找，对于长列表而言查找则会慢的多。在字典中查询也是同样的原理。想了解更多内容，请见[StackOverflow](http://stackoverflow.com/questions/513882/python-list-vs-dict-for-look-up-table) 。想了解在每种数据结构上的多种常见操作的花费时间的详细内容， 请见 [此页面](https://wiki.python.org/moin/TimeComplexity?)。
+
+因为这些性能上的差异，在下列场合在使用集合或者字典而不是列表，通常会是个好主意：
+-   集合体中包含大量的项
+-   您将在集合体中重复地查找项
+-   您没有重复的项
+
+对于小的集合体，或者您不会频繁查找的集合体，建立哈希带来的额外时间和内存的开销经常会大过改进搜索速度所节省的时间。
+
+### Python 之禅
+
+又名 [**PEP 20**](https://www.python.org/dev/peps/pep-0020), Python设计的指导原则。
+
+```text
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+
+Python之禅 by Tim Peters
+
+优美胜于丑陋（Python以编写优美的代码为目标）
+明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）
+简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）
+复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）
+扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）
+间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）
+可读性很重要（优美的代码是可读的）
+即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）
+不要包容所有错误，除非您确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）
+当存在多种可能，不要尝试去猜测
+而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）
+虽然这并不容易，因为您不是 Python 之父（这里的 Dutch 是指 Guido ）
+做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
+如果您无法向人描述您的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
+命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
+```
+
+### PEP8
+[**PEP 8**](https://www.python.org/dev/peps/pep-0008) 是 Python 正在实施的代码风格指南，我们可以在 [pep8.org](http://pep8.org/) 上获得高质量的、最新的 PEP 8 版本。
+
+### 约定
+
+这里介绍一些应该遵循的约定，使得您编写的代码更加易读。
+
+#### 检查变量是否等于常量
+
+您不需要明确地比较一个值是 True、False 或者 None，可以仅仅把它放到 `if` 语句中。参阅 [真值测试](http://docs.python.org/library/stdtypes.html#truth-value-testing) 来了解什么被认为是 False。
+
+```ad-note
+title:糟糕
+```python
+if attr == True:
+    print 'True!'
+
+if attr == None:
+    print 'attr is None!'
+```
+
+```ad-note
+title:优雅
+```python
+# 检查值
+if attr:
+    print 'attr is truthy!'
+
+# 或者做相反的检查
+if not attr:
+    print 'attr is falsey!'
+
+# or, since None is considered false, explicitly check for it
+if attr is None:
+    print 'attr is None!'
+```
